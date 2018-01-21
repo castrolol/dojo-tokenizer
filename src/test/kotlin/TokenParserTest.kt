@@ -23,8 +23,61 @@ class TokenParserTest {
         tokens[0].tipo `should equal` "number"
         tokens[0].valor `should equal` "55"
 
+    }
+
+    @Test
+    fun `deve agrupar espacos`(){
+
+
+        val parser = TokenParser()
+
+        val code = """55
+
+
+            true"""
+
+        for(char in code){
+            parser.consume(char)
+        }
+
+        val tokens = parser.tokens
+
+        tokens.size `should equal` 3
+        tokens[1].tipo `should equal` "whitespace"
+        tokens[1].valor `should equal` """
+
+
+            """
+
 
     }
+
+    @Test
+    fun `deve retornar boolean`(){
+
+        val code = "true false"
+
+        val parser = TokenParser()
+
+        for(char in code){
+            parser.consume(char)
+        }
+
+        parser.end()
+
+        val tokens = parser.tokens
+
+        tokens[0].tipo `should equal` "boolean"
+        tokens[0].valor `should equal` "true"
+
+
+        tokens[2].tipo `should equal` "boolean"
+        tokens[2].valor `should equal` "false"
+
+
+    }
+
+
     @Test
     fun `deve retornar o tipo number`(){
         val char = '5'
@@ -73,7 +126,7 @@ class TokenParserTest {
         val tipo = parser.checkType(char)
 
 
-        tipo `should equal` "whiteSpace"
+        tipo `should equal` "whitespace"
     }
 
     @Test
