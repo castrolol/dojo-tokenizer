@@ -9,7 +9,7 @@ Galera:
  - Rodrigo Pego (@rlopes87)
  - Cachoeira (@srguimaraes)
  - Wagner Moicano
- - Ronan Strobel
+ - Ronan Strobel (@ronanstrobel)
  - Luan Castro (@castrolol)
 
 
